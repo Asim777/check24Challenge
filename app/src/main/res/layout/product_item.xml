@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="productUiModel"
+            type="com.asimgasimzade.check24challenge.presentation.model.ProductUiModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/product_image_available"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:id="@+id/product_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{productUiModel.name}"
+            app:layout_constraintStart_toEndOf="@+id/product_image_available"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/product_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{productUiModel.releaseDate}"
+            app:layout_constraintEnd_toStartOf="@+id/product_image_not_available"
+            app:layout_constraintStart_toEndOf="@+id/product_title"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/product_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{productUiModel.description}"
+            app:layout_constraintEnd_toStartOf="@+id/product_image_not_available"
+            app:layout_constraintStart_toEndOf="@+id/product_image_available"
+            app:layout_constraintTop_toBottomOf="@+id/product_title" />
+
+        <TextView
+            android:id="@+id/product_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginLeft="6dp"
+            android:text="@{productUiModel.price.value + ' ' + productUiModel.price.currency}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ratingBar"
+            app:layout_constraintStart_toEndOf="@+id/product_image_available"
+            app:layout_constraintTop_toBottomOf="@+id/product_description" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/product_image_not_available"
+            app:layout_constraintStart_toEndOf="@+id/product_price"
+            app:layout_constraintTop_toBottomOf="@+id/product_description" />
+
+        <ImageView
+            android:id="@+id/product_image_not_available"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
